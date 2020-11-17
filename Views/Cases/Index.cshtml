@@ -1,0 +1,159 @@
+﻿@model IEnumerable<COVID19TriC.Models.Case>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quarantined)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateQuarantineEnds)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountyNotified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GeneralComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExposureComments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateLastAtLocation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfExposure)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfSymptoms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfTest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfDiagnosis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReported)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Symptoms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportingName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportingTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateCreated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateModified)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportingDepartmentID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TravelRestrictionState)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quarantined)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateQuarantineEnds)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CountyNotified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GeneralComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExposureComments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateLastAtLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfExposure)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfSymptoms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfTest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfDiagnosis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReported)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Symptoms)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportingName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportingTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateCreated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateModified)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReportingDepartmentID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TravelRestrictionState)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonID)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CaseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CaseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CaseID })
+        </td>
+    </tr>
+}
+
+</table>
