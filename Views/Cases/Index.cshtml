@@ -4,84 +4,80 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<body>
+    <h2>Cases</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Quarantined)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateQuarantineEnds)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountyNotified)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GeneralComments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExposureComments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateLastAtLocation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfExposure)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfSymptoms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfTest)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateOfDiagnosis)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateReported)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Symptoms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReportingName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReportingTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateModified)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReportingDepartmentID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TravelRestrictionState)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StatusID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PersonID)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
+
+    @using (Html.BeginForm())
+    {<form>
+    <table>
+
+        <tr>
+            <td style="padding-right:10px"><input type="radio" name="QuarantineOnly" value="1" checked></td>
+            <td style="padding-right:15px">View Quarantined Only</td>
+            <td style="padding-right:15px">View By Status: @Html.DropDownList("caseStatus", "All Statuses Selected")</td>
+            <td style="padding-right:15px">Last Name Search: @Html.TextBox("SearchString")</td>
+            <td><input type="submit" value="Filter"></td>
+        </tr>
+        <tr>
+            <td style="padding-right:10px"><input type="radio" name="QuarantineOnly" value="0" 2 /></td>
+            <td style="padding-right:15px">View All Cases</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+
+
+    </table>
+</form>
+    }
+    </br>
+    <p>
+        @Html.ActionLink("Create New Case", "Create") <br />
+        <button id="showDetail">Show Details</button>
+    </p>
+    <table class="table table-sm table-striped" id="ppl">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Person.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quarantined)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateQuarantineEnds)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status.StatusDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location.LocationDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GeneralComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExposureComments)
+            </th>
+
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Person.FirstName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Quarantined)
         </td>
@@ -89,7 +85,10 @@
             @Html.DisplayFor(modelItem => item.DateQuarantineEnds)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CountyNotified)
+            @Html.DisplayFor(modelItem => item.Status.StatusDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location.LocationDescription)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GeneralComments)
@@ -98,62 +97,36 @@
             @Html.DisplayFor(modelItem => item.ExposureComments)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateLastAtLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfExposure)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfSymptoms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfTest)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfDiagnosis)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateReported)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Symptoms)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReportingName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReportingTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateModified)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReportingDepartmentID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TravelRestrictionState)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PersonID)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CaseID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CaseID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CaseID })
+            <ul style="list-style-type:none">
+                <li>@Html.ActionLink("Details", "Details", new { id = item.CaseID })</li>
+                <li>@Html.ActionLink("Edit", "Edit", new { id = item.CaseID })</li>
+                <li>@Html.ActionLink("Delete", "Delete", new { id = item.CaseID })</li>
+            </ul>
         </td>
     </tr>
-}
+        }
 
-</table>
+    </table>
+
+</body>
+
+<script>
+    var toggle = document.getElementById("showDetail");
+    toggle.addEventListener("mouseup", function () {
+        if (toggle.innerHTML == "Show Details") {
+            toggle.innerHTML = "Hide Details"
+        }
+        else {
+            toggle.innerHTML= "Show Details"
+        }
+        $('#ppl tr th:nth-child(2)').toggle();
+        $('#ppl tr td:nth-child(2)').toggle();
+        $('#ppl tr th:nth-child(3)').toggle();
+        $('#ppl tr td:nth-child(5)').toggle(); $('#ppl tr th:nth-child(3)').toggle();
+        $('#ppl tr td:nth-child(5)').toggle(); $('#ppl tr th:nth-child(4)').toggle();
+        $('#ppl tr td:nth-child(4)').toggle();
+        $('#ppl tr th:nth-child(5)').toggle();
+        $('#ppl tr td:nth-child(5)').toggle();
+    })
+</script>
+

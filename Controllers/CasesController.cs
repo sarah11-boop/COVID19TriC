@@ -4,21 +4,59 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using COVID19TriC.Data;
+using System.Web.UI.WebControls;
 using COVID19TriC.Models;
+using COVID19TriC.Data;
+
+
+
 
 namespace COVID19TriC.Controllers
 {
+    
     public class CasesController : Controller
     {
-        private COVID19TriCContext db = new COVID19TriCContext();
 
+        private COVID19TriCContext db = new COVID19TriCContext();
         // GET: Cases
-        public ActionResult Index()
+        public ActionResult Index(string caseStatus, string QuarantinedFlag, string SearchString)
         {
-            return View(db.Cases.ToList());
+            
+            var StatusList = new List<COVID19TriC.Models.Status>();
+
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+
+           
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
+
+            var cases = from c in db.Cases
+                        .Include(p => p.Person)
+                        .Include(s => s.Status)
+                        .Include(d => d.Department)
+                        .Include(l => l.Location)
+                        select c;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+               cases = cases.Where(n => n.Person.LastName.Contains(SearchString));
+            }
+            if (QuarantinedFlag == "1")
+            {
+                cases = cases.Where(x => x.Quarantined == true);
+            }
+
+            if (!string.IsNullOrEmpty(caseStatus))
+            {
+                var CaseStatusID = Int32.Parse(caseStatus);
+                cases = cases.Where(x => x.StatusID == CaseStatusID);
+            }
+
+            return View(cases.ToList());
+
         }
 
         // GET: Cases/Details/5
@@ -26,6 +64,12 @@ namespace COVID19TriC.Controllers
         {
             if (id == null)
             {
+                var cases = from c in db.Cases
+                       .Include(p => p.Person)
+                       .Include(s => s.Status)
+                       .Include(d => d.Department)
+                        select c;
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Case @case = db.Cases.Find(id);

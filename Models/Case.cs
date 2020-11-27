@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,8 @@ namespace COVID19TriC.Models
     {
         public int CaseID { get; set; }
         public bool Quarantined { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime DateQuarantineEnds { get; set; }
         public bool CountyNotified { get; set; }
         public string GeneralComments { get; set; }
@@ -47,5 +50,9 @@ namespace COVID19TriC.Models
         public int TravelRestrictionState { get; set; }
         public int StatusID { get; set; }
         public int PersonID { get; set; }
+        public virtual Status Status { get; set; }
+        public virtual Person Person { get; set; }
+        public virtual Department Department { get; set; }
+        public virtual Location Location { get; set; }
     }
 }

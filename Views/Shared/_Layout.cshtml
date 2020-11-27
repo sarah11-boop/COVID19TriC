@@ -6,6 +6,22 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/datatables")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+    <script class="init">
+        $(document).ready(function () {
+            $noConflict();
+            $('#dynamicTable').DataTable({
+                "ordering": true
+            });
+        });
+    </script>
+
+
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -42,3 +58,5 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+

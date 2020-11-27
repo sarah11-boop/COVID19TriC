@@ -64,7 +64,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
+            @Html.DisplayFor(model => model.formattedPhoneNumber)
         </dd>
 
         <dt>
@@ -97,6 +97,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.ModifiedBy)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationID)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentID)
         </dd>
 
     </dl>

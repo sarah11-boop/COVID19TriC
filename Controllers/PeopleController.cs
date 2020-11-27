@@ -16,16 +16,31 @@ namespace COVID19TriC.Controllers
         private COVID19TriCContext db = new COVID19TriCContext();
 
         // GET: People
-        public ActionResult Index()
+        public ActionResult Index(string SearchString)
         {
-            return View(db.People.ToList());
+            var people = from p in db.People
+                        .Include(l => l.Location)
+                        .Include(d => d.Department)
+                        select p;
+
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                people = people.Where(n => n.LastName.Contains(SearchString));
+            }
+
+            return View(people.ToList());
         }
 
         // GET: People/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
+                var people = from p in db.People
+                        .Include(l => l.Location)
+                        .Include(d => d.Department)
+                         select p;
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Person person = db.People.Find(id);
@@ -47,8 +62,9 @@ namespace COVID19TriC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
         {
+             
             if (ModelState.IsValid)
             {
                 db.People.Add(person);
@@ -79,7 +95,7 @@ namespace COVID19TriC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy ,DepartmentID,LocationID")] Person person)
         {
             if (ModelState.IsValid)
             {

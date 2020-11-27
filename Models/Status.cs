@@ -9,5 +9,6 @@ namespace COVID19TriC.Models
     {
         public int StatusID { get; set; }
         public string StatusDescription { get; set; }
+        public virtual ICollection<Case> Cases { get; set; }
     }
 }

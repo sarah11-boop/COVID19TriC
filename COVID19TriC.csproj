@@ -136,6 +136,59 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011172039456_InitialCreate.cs" />
+    <Compile Include="Migrations\202011172039456_InitialCreate.Designer.cs">
+      <DependentUpon>202011172039456_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011201200218_add-migration correct-personmodel.cs" />
+    <Compile Include="Migrations\202011201200218_add-migration correct-personmodel.Designer.cs">
+      <DependentUpon>202011201200218_add-migration correct-personmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011232358390_description-references.cs" />
+    <Compile Include="Migrations\202011232358390_description-references.Designer.cs">
+      <DependentUpon>202011232358390_description-references.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011240049101_added-departmentdesc.cs" />
+    <Compile Include="Migrations\202011240049101_added-departmentdesc.Designer.cs">
+      <DependentUpon>202011240049101_added-departmentdesc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011240059360_person-table-descriptions.cs" />
+    <Compile Include="Migrations\202011240059360_person-table-descriptions.Designer.cs">
+      <DependentUpon>202011240059360_person-table-descriptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011241437122_casetable-nameannotations.cs" />
+    <Compile Include="Migrations\202011241437122_casetable-nameannotations.Designer.cs">
+      <DependentUpon>202011241437122_casetable-nameannotations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011241445389_undo-colnameannotation.cs" />
+    <Compile Include="Migrations\202011241445389_undo-colnameannotation.Designer.cs">
+      <DependentUpon>202011241445389_undo-colnameannotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011251743040_department-anomaly.cs" />
+    <Compile Include="Migrations\202011251743040_department-anomaly.Designer.cs">
+      <DependentUpon>202011251743040_department-anomaly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011252342111_updatedCaseView.cs" />
+    <Compile Include="Migrations\202011252342111_updatedCaseView.Designer.cs">
+      <DependentUpon>202011252342111_updatedCaseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011271418239_removedLocationFromCase.cs" />
+    <Compile Include="Migrations\202011271418239_removedLocationFromCase.Designer.cs">
+      <DependentUpon>202011271418239_removedLocationFromCase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011272015467_formatted-phonenumber.cs" />
+    <Compile Include="Migrations\202011272015467_formatted-phonenumber.Designer.cs">
+      <DependentUpon>202011272015467_formatted-phonenumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011272024324_formatThePhoneNo.cs" />
+    <Compile Include="Migrations\202011272024324_formatThePhoneNo.Designer.cs">
+      <DependentUpon>202011272024324_formatThePhoneNo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011272047500_formatPhoneAgain.cs" />
+    <Compile Include="Migrations\202011272047500_formatPhoneAgain.Designer.cs">
+      <DependentUpon>202011272047500_formatPhoneAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Location.cs" />
@@ -149,6 +202,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -156,6 +210,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\datatables.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -221,6 +276,47 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202011172039456_InitialCreate.resx">
+      <DependentUpon>202011172039456_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011201200218_add-migration correct-personmodel.resx">
+      <DependentUpon>202011201200218_add-migration correct-personmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011232358390_description-references.resx">
+      <DependentUpon>202011232358390_description-references.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011240049101_added-departmentdesc.resx">
+      <DependentUpon>202011240049101_added-departmentdesc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011240059360_person-table-descriptions.resx">
+      <DependentUpon>202011240059360_person-table-descriptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011241437122_casetable-nameannotations.resx">
+      <DependentUpon>202011241437122_casetable-nameannotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011241445389_undo-colnameannotation.resx">
+      <DependentUpon>202011241445389_undo-colnameannotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011251743040_department-anomaly.resx">
+      <DependentUpon>202011251743040_department-anomaly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011252342111_updatedCaseView.resx">
+      <DependentUpon>202011252342111_updatedCaseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011271418239_removedLocationFromCase.resx">
+      <DependentUpon>202011271418239_removedLocationFromCase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011272015467_formatted-phonenumber.resx">
+      <DependentUpon>202011272015467_formatted-phonenumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011272024324_formatThePhoneNo.resx">
+      <DependentUpon>202011272024324_formatThePhoneNo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011272047500_formatPhoneAgain.resx">
+      <DependentUpon>202011272047500_formatPhoneAgain.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -24,7 +24,11 @@ namespace COVID19TriC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/datatables.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(             
+                      "~/Scripts/datatables.js"));
         }
     }
 }
