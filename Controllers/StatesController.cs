@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Services;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -12,124 +11,107 @@ using COVID19TriC.Models;
 
 namespace COVID19TriC.Controllers
 {
-    public class PeopleController : Controller
+    public class StatesController : Controller
     {
         private COVID19TriCContext db = new COVID19TriCContext();
 
-        // GET: People
-        public ActionResult Index(string SearchString)
+        // GET: States
+        public ActionResult Index()
         {
-            var people = from p in db.People
-                        .Include(l => l.Location)
-                        .Include(d => d.Department)
-                         select p;
-
-            if (!String.IsNullOrEmpty(SearchString))
-            {
-                people = people.Where(n => n.LastName.Contains(SearchString));
-            }
-
-            return View(people.ToList());
+            return View(db.States.ToList());
         }
-        
 
-        // GET: People/Details/5
+        // GET: States/Details/5
         public ActionResult Details(int? id)
         {
-            
             if (id == null)
             {
-                var people = from p in db.People
-                        .Include(l => l.Location)
-                        .Include(d => d.Department)
-                         select p;
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            State state = db.States.Find(id);
+            if (state == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(state);
         }
 
-        // GET: People/Create
+        // GET: States/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: People/Create
+        // POST: States/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
+        public ActionResult Create([Bind(Include = "StateID,StateName")] State state)
         {
-             
             if (ModelState.IsValid)
             {
-                db.People.Add(person);
+                db.States.Add(state);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(person);
+            return View(state);
         }
 
-        // GET: People/Edit/5
+        // GET: States/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            State state = db.States.Find(id);
+            if (state == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(state);
         }
 
-        // POST: People/Edit/5
+        // POST: States/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy ,DepartmentID,LocationID")] Person person)
+        public ActionResult Edit([Bind(Include = "StateID,StateName")] State state)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(person).State = EntityState.Modified;
+                db.Entry(state).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(person);
+            return View(state);
         }
 
-        // GET: People/Delete/5
+        // GET: States/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Person person = db.People.Find(id);
-            if (person == null)
+            State state = db.States.Find(id);
+            if (state == null)
             {
                 return HttpNotFound();
             }
-            return View(person);
+            return View(state);
         }
 
-        // POST: People/Delete/5
+        // POST: States/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Person person = db.People.Find(id);
-            db.People.Remove(person);
+            State state = db.States.Find(id);
+            db.States.Remove(state);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

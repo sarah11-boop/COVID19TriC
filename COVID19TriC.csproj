@@ -52,6 +52,16 @@
       <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Services, Version=5.8.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -131,6 +141,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
+    <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StatusesController.cs" />
     <Compile Include="Data\COVID19TriCContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -188,6 +199,30 @@
     <Compile Include="Migrations\202011272047500_formatPhoneAgain.Designer.cs">
       <DependentUpon>202011272047500_formatPhoneAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011280156023_experimental-colsort.cs" />
+    <Compile Include="Migrations\202011280156023_experimental-colsort.Designer.cs">
+      <DependentUpon>202011280156023_experimental-colsort.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011280213138_xperiment2.cs" />
+    <Compile Include="Migrations\202011280213138_xperiment2.Designer.cs">
+      <DependentUpon>202011280213138_xperiment2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011280220217_experimental-colsort2.cs" />
+    <Compile Include="Migrations\202011280220217_experimental-colsort2.Designer.cs">
+      <DependentUpon>202011280220217_experimental-colsort2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011281447040_added-states.cs" />
+    <Compile Include="Migrations\202011281447040_added-states.Designer.cs">
+      <DependentUpon>202011281447040_added-states.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011301535392_truncate-comments.cs" />
+    <Compile Include="Migrations\202011301535392_truncate-comments.Designer.cs">
+      <DependentUpon>202011301535392_truncate-comments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012010016174_final-team.cs" />
+    <Compile Include="Migrations\202012010016174_final-team.Designer.cs">
+      <DependentUpon>202012010016174_final-team.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Case.cs" />
     <Compile Include="Models\Department.cs" />
@@ -203,6 +238,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datatables.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -260,6 +296,11 @@
     <Content Include="Views\Departments\Details.cshtml" />
     <Content Include="Views\Departments\Edit.cshtml" />
     <Content Include="Views\Departments\Index.cshtml" />
+    <Content Include="Views\States\Create.cshtml" />
+    <Content Include="Views\States\Delete.cshtml" />
+    <Content Include="Views\States\Details.cshtml" />
+    <Content Include="Views\States\Edit.cshtml" />
+    <Content Include="Views\States\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +357,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011272047500_formatPhoneAgain.resx">
       <DependentUpon>202011272047500_formatPhoneAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011280156023_experimental-colsort.resx">
+      <DependentUpon>202011280156023_experimental-colsort.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011280213138_xperiment2.resx">
+      <DependentUpon>202011280213138_xperiment2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011280220217_experimental-colsort2.resx">
+      <DependentUpon>202011280220217_experimental-colsort2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011281447040_added-states.resx">
+      <DependentUpon>202011281447040_added-states.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011301535392_truncate-comments.resx">
+      <DependentUpon>202011301535392_truncate-comments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012010016174_final-team.resx">
+      <DependentUpon>202012010016174_final-team.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Collections.Specialized;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace COVID19TriC.Models
 {
@@ -33,10 +36,15 @@ namespace COVID19TriC.Models
         {
              get
              {
-       
                 return string.Format("({0}) {1}-{2}", PhoneNumber.Substring(0, 3), PhoneNumber.Substring(3, 3), PhoneNumber.Substring(6, 4));               
-            }
+             }
 
         }
+
+        
+       
     }
+    
+
+    
 }

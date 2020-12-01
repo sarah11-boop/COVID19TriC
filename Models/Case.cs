@@ -54,5 +54,25 @@ namespace COVID19TriC.Models
         public virtual Person Person { get; set; }
         public virtual Department Department { get; set; }
         public virtual Location Location { get; set; }
+
+        public string formattedExpComments
+        {
+            get
+            {
+                int maxLength = Math.Min(ExposureComments.Length, 40);
+                string exp = ExposureComments.Substring(0, maxLength);
+                return exp;
+            }
+        }
+        public string formattedGenComments
+        {
+            get
+            {
+                int maxLength = Math.Min(GeneralComments.Length, 40);
+                string gen = GeneralComments.Substring(0, maxLength);
+                return gen;
+            }
+        }
+
     }
 }

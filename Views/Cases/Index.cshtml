@@ -35,33 +35,33 @@
     </br>
     <p>
         @Html.ActionLink("Create New Case", "Create") <br />
-        <button id="showDetail">Show Details</button>
+
     </p>
     <table class="table table-sm table-striped" id="ppl">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Person.LastName)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Person.FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Quarantined)
+                Quarantine
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateQuarantineEnds)
+                Date Quarantine Ends
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status.StatusDescription)
+                Status Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Location.LocationDescription)
+                Location Description
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GeneralComments)
+                General Comments
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ExposureComments)
+                Exposure Comments
             </th>
 
 
@@ -91,10 +91,10 @@
             @Html.DisplayFor(modelItem => item.Location.LocationDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GeneralComments)
+            @Html.DisplayFor(modelItem => item.formattedGenComments)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ExposureComments)
+            @Html.DisplayFor(modelItem => item.formattedExpComments)
         </td>
         <td>
             <ul style="list-style-type:none">
