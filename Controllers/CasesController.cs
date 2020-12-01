@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -39,8 +40,22 @@ namespace COVID19TriC.Controllers
         // GET: Cases/Create
         public ActionResult Create()
         {
+            var StatusList = new List<COVID19TriC.Models.Status>();
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
+
+            var DepartmentList = new List<COVID19TriC.Models.Department>();
+            var DepartmentQry = from s in db.Departments
+                                orderby s.DepartmentID
+                                select s;
+            DepartmentList = DepartmentQry.ToList();
+            ViewBag.departmentStatus = new SelectList(DepartmentList, "DepartmentID", "DepartmentDescription");
             return View();
         }
+       
 
         // POST: Cases/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -62,6 +77,21 @@ namespace COVID19TriC.Controllers
         // GET: Cases/Edit/5
         public ActionResult Edit(int? id)
         {
+            var StatusList = new List<COVID19TriC.Models.Status>();
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
+
+            var DepartmentList = new List<COVID19TriC.Models.Department>();
+            var DepartmentQry = from s in db.Departments
+                                orderby s.DepartmentID
+                                select s;
+            DepartmentList = DepartmentQry.ToList();
+            ViewBag.departmentStatus = new SelectList(DepartmentList, "DepartmentID", "DepartmentDescription");
+
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

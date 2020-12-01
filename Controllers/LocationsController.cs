@@ -39,9 +39,14 @@ namespace COVID19TriC.Controllers
         // GET: Locations/Create
         public ActionResult Create()
         {
+            var LocationList = new List<COVID19TriC.Models.Location>();
+            var LocationQry = from s in db.Locations
+                              orderby s.LocationID
+                              select s;
+            LocationList = LocationQry.ToList();
+            ViewBag.locationStatus = new SelectList(LocationList, "LocationID", "LocationDescription");
             return View();
         }
-
         // POST: Locations/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

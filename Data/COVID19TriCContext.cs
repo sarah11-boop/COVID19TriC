@@ -28,5 +28,6 @@ namespace COVID19TriC.Data
         public System.Data.Entity.DbSet<COVID19TriC.Models.Location> Locations { get; set; }
 
         public System.Data.Entity.DbSet<COVID19TriC.Models.Department> Departments { get; set; }
+
     }
 }

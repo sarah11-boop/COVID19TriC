@@ -39,15 +39,27 @@ namespace COVID19TriC.Controllers
         // GET: People/Create
         public ActionResult Create()
         {
+            var LocationList = new List<COVID19TriC.Models.Location>();
+            var LocationQry = from s in db.Locations
+                              orderby s.LocationID
+                              select s;
+            LocationList = LocationQry.ToList();
+            ViewBag.locationStatus = new SelectList(LocationList, "LocationID", "LocationDescription");
+
+            var DepartmentList = new List<COVID19TriC.Models.Department>();
+            var DepartmentQry = from s in db.Departments
+                                orderby s.DepartmentID
+                                select s;
+            DepartmentList = DepartmentQry.ToList();
+            ViewBag.departmentStatus = new SelectList(DepartmentList, "DepartmentID", "DepartmentDescription");
             return View();
         }
-
         // POST: People/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +74,20 @@ namespace COVID19TriC.Controllers
         // GET: People/Edit/5
         public ActionResult Edit(int? id)
         {
+            var LocationList = new List<COVID19TriC.Models.Location>();
+            var LocationQry = from s in db.Locations
+                              orderby s.LocationID
+                              select s;
+            LocationList = LocationQry.ToList();
+            ViewBag.locationStatus = new SelectList(LocationList, "LocationID", "LocationDescription");
+
+            var DepartmentList = new List<COVID19TriC.Models.Department>();
+            var DepartmentQry = from s in db.Departments
+                                orderby s.DepartmentID
+                                select s;
+            DepartmentList = DepartmentQry.ToList();
+            ViewBag.departmentStatus = new SelectList(DepartmentList, "DepartmentID", "DepartmentDescription");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -79,7 +105,7 @@ namespace COVID19TriC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
         {
             if (ModelState.IsValid)
             {

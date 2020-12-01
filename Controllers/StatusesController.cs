@@ -39,6 +39,12 @@ namespace COVID19TriC.Controllers
         // GET: Statuses/Create
         public ActionResult Create()
         {
+            var StatusList = new List<COVID19TriC.Models.Status>();
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
             return View();
         }
 
