@@ -16,9 +16,14 @@
     <div class="search-box">
         <form class="form-inline">
             <div class="form-group">
-                input type="text" name="q" value="@ViewBag.searchQuery" class="search-text form-control" placeholder="Last Name Search"/>
+                @using (Html.BeginForm())
+                {
+                    <p>
+                        Last Name Search: @Html.TextBox("SearchString")&nbsp&nbsp
+                        <input type="submit" value="Search" />
+                    </p>
+                }
             </div>
-            <button type="submit" class="btn btn-into">Search</button>
         </form>
 
     </div>

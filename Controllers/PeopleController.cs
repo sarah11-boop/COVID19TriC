@@ -19,6 +19,7 @@ namespace COVID19TriC.Controllers
         // GET: People
         public ActionResult Index(string SearchString)
         {
+            
             var people = from p in db.People
                         .Include(l => l.Location)
                         .Include(d => d.Department)
