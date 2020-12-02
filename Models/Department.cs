@@ -8,6 +8,7 @@ namespace COVID19TriC.Models
     public class Department
     {
         public int DepartmentID { get; set; }
+         [Required]
         public string DepartmentDescription { get; set; }
     }
 }
