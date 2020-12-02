@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -39,6 +39,12 @@ namespace COVID19TriC.Controllers
         // GET: Departments/Create
         public ActionResult Create()
         {
+            var DepartmentList = new List<COVID19TriC.Models.Department>();
+            var DepartmentQry = from s in db.Departments
+                                orderby s.DepartmentID
+                                select s;
+            DepartmentList = DepartmentQry.ToList();
+            ViewBag.departmentStatus = new SelectList(DepartmentList, "DepartmentID", "DepartmentDescription");
             return View();
         }
 
@@ -126,3 +132,4 @@ namespace COVID19TriC.Controllers
         }
     }
 }
+
