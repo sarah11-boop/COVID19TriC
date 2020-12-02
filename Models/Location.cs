@@ -8,6 +8,7 @@ namespace COVID19TriC.Models
     public class Location
     {
         public int LocationID { get; set; }
+        [Required]
         public string LocationDescription { get; set; }
     }
 }
