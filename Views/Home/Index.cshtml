@@ -1,31 +1,195 @@
-﻿@{
+﻿@model IEnumerable<COVID19TriC.Models.Case>
+
+@{
     ViewBag.Title = "Home Page";
+
 }
 
-<div class="jumbotron">
-    <h1>Tri-C COVID19 Contact Tracing</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link rel="stylesheet" href="~/content/Site.css" type="text/css" />
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<style>
+    
+</style>
+
+<body style="background: none">
+
+    <section class="hero">
+        <div class="container ">
+            <h1>Tri-C Covid 19 Tracing</h1>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+    <div class="container-fluid ">
+
+
+        <br />
+        <h2 style="color: #008c95; font-style: italic">COVID 19 Dashboard</h2>
+        <div class="row">
+            <div class="col-md-12 table-bordered box" style="border-color:#e87822">
+                <h2 style="text-align: center">Current Cases</h2>
+                <br />
+
+                <form>
+                    <table>
+
+                        <tr>
+                            <td>Show All Cases: </td>
+                            <td style="padding-right:15px">
+                                <input type="radio" name="QuarantinedFlag" value="0" />
+                            </td>
+                            <td style="padding-right:15px">View By Status: @Html.DropDownList("caseStatus", "All")</td>
+                            <td style="padding-right:15px">Last Name Search: @Html.TextBox("SearchString")</td>
+                            <td><input type="submit" value="Filter" /></td>
+                        </tr>
+                        <tr>
+                            <td>Show Quarantined:&nbsp</td>
+                            <td style="padding-right:15px"><input type="radio" name="QuarantinedFlag" value="1" checked /></td>
+                        </tr>
+                    </table>
+                </form>
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Person.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Person.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Status.StatusDescription)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quarantined)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DateQuarantineEnds)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GeneralComments)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ExposureComments)
+                        </th>
+
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Person.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Person.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Status.StatusDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quarantined)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateQuarantineEnds)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GeneralComments)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ExposureComments)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        
+            <div class="row ">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Weekly Totals Table</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Weekly Totals Table</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+        <div class="row">
+
+            <div class=" col-md-6 lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Locations Totals</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Overall Statistics</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Getting started</h2>
+                <p>
+                    ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                    enables a clean separation of concerns and gives you full control over markup
+                    for enjoyable, agile development.
+                </p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Get more libraries</h2>
+                <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Web Hosting</h2>
+                <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</body>

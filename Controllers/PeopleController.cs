@@ -47,7 +47,7 @@ namespace COVID19TriC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Create([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace COVID19TriC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy")] Person person)
+        public ActionResult Edit([Bind(Include = "PersonID,SNumber,LastName,FirstName,MiddleName,PersonalEmail,SchoolEmail,PhoneNumber,DateCreated,DateModified,CreatedBy,ModifiedBy,DepartmentID,LocationID")] Person person)
         {
             if (ModelState.IsValid)
             {

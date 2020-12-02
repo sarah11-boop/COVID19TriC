@@ -17,6 +17,8 @@ namespace COVID19TriC.Models
         public string PersonalEmail { get; set; }
         public string SchoolEmail { get; set; }
         public string PhoneNumber { get; set; }
+        public int LocationID { get; set; }
+        public int DepartmentID { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime DateCreated { get; set; }
@@ -25,5 +27,7 @@ namespace COVID19TriC.Models
         public DateTime DateModified { get; set; }
         public int CreatedBy { get; set; }
         public int ModifiedBy { get; set; }
+
+
     }
 }

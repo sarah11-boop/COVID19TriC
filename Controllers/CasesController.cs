@@ -16,9 +16,37 @@ namespace COVID19TriC.Controllers
         private COVID19TriCContext db = new COVID19TriCContext();
 
         // GET: Cases
-        public ActionResult Index()
+        public ActionResult Index(string caseStatus, string QuarantinedFlag)
         {
-            return View(db.Cases.ToList());
+            var StatusList = new List<COVID19TriC.Models.Status>();
+
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
+
+            var cases = from c in db.Cases
+                        .Include(p => p.Person)
+                        .Include(s => s.Status)
+                        select c;
+
+            //if (!String.IsNullOrEmpty(searchString))
+            //{
+            //    movies = movies.Where(s => s.Title.Contains(searchString));
+            //}
+            if (QuarantinedFlag == "1")
+            {
+                cases = cases.Where(x => x.Quarantined == true);
+            }
+            if (!string.IsNullOrEmpty(caseStatus))
+            {
+                var CaseStatusID = Int32.Parse(caseStatus);
+                cases = cases.Where(x => x.StatusID == CaseStatusID);
+            }
+
+            return View(cases.ToList());
         }
 
         // GET: Cases/Details/5
@@ -39,6 +67,15 @@ namespace COVID19TriC.Controllers
         // GET: Cases/Create
         public ActionResult Create()
         {
+            var StatusList = new List<COVID19TriC.Models.Status>();
+
+            var StatusQry = from s in db.Status
+                            orderby s.StatusID
+                            select s;
+
+            StatusList = StatusQry.ToList();
+            ViewBag.caseStatus = new SelectList(StatusList, "StatusID", "StatusDescription");
+
             return View();
         }
 

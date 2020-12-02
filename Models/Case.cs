@@ -47,5 +47,19 @@ namespace COVID19TriC.Models
         public int TravelRestrictionState { get; set; }
         public int StatusID { get; set; }
         public int PersonID { get; set; }
+
+        public virtual Status Status { get; set; }
+
+        public virtual Person Person { get; set; }
+
+        public virtual Department Department { get; set; }
+
+        public virtual Location Location { get; set; }
+
+
+
+
+
+
     }
 }

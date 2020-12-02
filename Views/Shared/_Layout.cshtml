@@ -6,34 +6,41 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Layout.css")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Tri-C COVID19 Contact Tracing", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <header>
+        <div class="site-header">
+            <div class="logo-bar">
+                <div class="logo-desktop"><a class="logo" href="/" title="Cuyahoga Community College"><img alt="Cuyahoga Community College" src="~/Content/Images/Tri-C logo.png" /></a></div>
+                <div class="logo-mobile"><a class="logo-mobile" href="/" title="Cuyahoga Community College"><img alt="Cuyahoga Community College" src="~/Content/Images/Circle.png" />Cuyahoga Community College</a></div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("People", "", "People")</li>
-                    <li>@Html.ActionLink("Cases", "", "Cases")</li>
-                    <li>@Html.ActionLink("Statuses", "", "Statuses")</li>
-                    <li>@Html.ActionLink("Locations", "", "Locations")</li>
-                    <li>@Html.ActionLink("Departments", "", "Departments")</li>
-                </ul>
+            <div>
             </div>
         </div>
+
+        <div id="globalNav">
+            <ul>
+                <li>@Html.ActionLink("Home", "", "Home")</li>
+                <li>@Html.ActionLink("People", "", "People")</li>
+                <li>@Html.ActionLink("Cases", "", "Cases")</li>
+                <li>@Html.ActionLink("Statuses", "", "Statuses")</li>
+                <li>@Html.ActionLink("Locations", "", "Locations")</li>
+                <li>@Html.ActionLink("Departments", "", "Departments")</li>
+            </ul>
+
+        </div>
+    </header>
+    <div class="header2">
+
+
     </div>
-    <div class="container body-content">
+    <div class="container ">
+        <!--body-content-->
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p class="footer-text">&copy; @DateTime.Now.Year - Tri-C Covid 19 Tracing App</p>
         </footer>
     </div>
 

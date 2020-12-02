@@ -14,7 +14,7 @@ namespace COVID19TriC.Data
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
+
         public COVID19TriCContext() : base("name=COVID19TriCContext")
         {
         }
